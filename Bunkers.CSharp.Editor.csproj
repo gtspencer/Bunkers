@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2D512955-8072-C72C-168E-494BE810E96A}</ProjectGuid>
+    <ProjectGuid>{32E7223D-FD69-8BA0-6B94-07557C285310}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -114,9 +114,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Bunkers_v1.0.CSharp.csproj">
-      <Project>{E61CCF21-42A2-84D8-5943-DD765D3EDA7E}</Project>
-      <Name>Bunkers_v1.0.CSharp</Name>
+    <ProjectReference Include="Bunkers.CSharp.csproj">
+      <Project>{628BC309-F054-0008-CDAC-690A7734CB69}</Project>
+      <Name>Bunkers.CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +124,22 @@
     <Compile Include="Assets\Assets\VRTK\Editor\VRTK_EditorUtilities.cs" />
     <Compile Include="Assets\Assets\VRTK\Editor\VRTK_InteractableObjectEditor.cs" />
     <Compile Include="Assets\Assets\VRTK\Scripts\Controls\2D\RadialMenu\Editor\RadialMenuInspector.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\GunHandlerWindow.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\HeldPositionWindow.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRBulletWizard.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRButtonEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRGunHandlerEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRGunHandlerRefEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRGunSlideEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRGunTriggerEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRGunWizard.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRInteractableItemEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRInteractorEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRInventoryEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRLoadableBulletEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRMagazineEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRSecondHeldEditor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Editor\VRThrowingKnifeEditor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Editor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_RenderModelEditor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Settings.cs" />
@@ -137,6 +153,7 @@
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\Unlit_TransparentColor.shader" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\VRTK_OutlineBasic.shader" />
     <None Include="Assets\Assets\VRTK\Version.txt" />
+    <None Include="Assets\Assets\VRWeaponInteractor\readme.txt" />
     <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />

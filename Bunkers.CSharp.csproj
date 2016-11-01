@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E61CCF21-42A2-84D8-5943-DD765D3EDA7E}</ProjectGuid>
+    <ProjectGuid>{628BC309-F054-0008-CDAC-690A7734CB69}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -69,6 +69,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\AimScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\DebrisScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\ExplosiveBarrelScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\GasTankScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\GunSwitchScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\TargetScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\CasingScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\GrenadeScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\MagazineScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\ProjectileScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\Explosion &amp; Impact\ExplosionScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\Explosion &amp; Impact\ImpactScript.cs" />
+    <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Scripts\GunScript.cs" />
     <Compile Include="Assets\Assets\VRTK\Examples\Resources\Scripts\Archery\Arrow.cs" />
     <Compile Include="Assets\Assets\VRTK\Examples\Resources\Scripts\Archery\ArrowNotch.cs" />
     <Compile Include="Assets\Assets\VRTK\Examples\Resources\Scripts\Archery\ArrowSpawner.cs" />
@@ -205,25 +218,49 @@
     <Compile Include="Assets\Assets\VRTK\Scripts\VRTK_TeleportDisableOnHeadsetCollision.cs" />
     <Compile Include="Assets\Assets\VRTK\Scripts\VRTK_TouchpadWalking.cs" />
     <Compile Include="Assets\Assets\VRTK\Scripts\VRTK_UIPointer.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\AimScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\DebrisScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\ExplosiveBarrelScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\GasTankScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\GunSwitchScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\TargetScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\CasingScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\GrenadeScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\MagazineScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\Casings &amp; Mags\ProjectileScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\Explosion &amp; Impact\ExplosionScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\Explosion &amp; Impact\ImpactScript.cs" />
-    <Compile Include="Assets\Low Poly Gun Pack\Components\Scripts\GunScript.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Controls\VRDefaultControls.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Controls\VRSpawnItemControls.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Inventory\ClipSpawnerExample.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Inventory\HolsterExample.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Inventory\VRInventory.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Inventory\VRInventoryItem.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Inventory\VRInventorySlot.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\ApplyDamage.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\CollisionForwarder.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\DamageInfo.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\DecalChanger.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\DestroyIn.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\DisplayAmmo.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\ExampleEnemy.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\Fade.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\KnifeCollider.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\Mover.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\ProjectileShooter.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Util\VRUtils.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\VRButtonExample.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\VRInteractableItem.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\VRInteractor.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRBulletReceiver.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRClipReceiver.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRGunHandler.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRGunHandlerRef.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRGunSlide.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRGunTrigger.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRLoadableBullet.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRMagazine.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRSecondHeld.cs" />
+    <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRThrowingKnife.cs" />
+    <Compile Include="Assets\Scripts\AmmoAssign.cs" />
+    <Compile Include="Assets\Scripts\AmmoSpitter.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\EnemyHUDBehaviour.cs" />
+    <Compile Include="Assets\Scripts\RoofBehaviour.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Compile Include="Assets\Scripts\UserBehaviour.cs" />
     <Compile Include="Assets\Scripts\WallBehaviour.cs" />
     <Compile Include="Assets\Scripts\WallHUDBehaviour.cs" />
     <Compile Include="Assets\Scripts\WallTopBehaviour.cs" />
+    <Compile Include="Assets\Scripts\WeaponSelector.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -267,6 +304,7 @@
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\Unlit_TransparentColor.shader" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\VRTK_OutlineBasic.shader" />
     <None Include="Assets\Assets\VRTK\Version.txt" />
+    <None Include="Assets\Assets\VRWeaponInteractor\readme.txt" />
     <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />
