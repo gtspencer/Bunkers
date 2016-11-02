@@ -2,10 +2,9 @@
 using System.Collections;
 
 public class AmmoAssign : MonoBehaviour {
+    public GameObject ammoVendingMachine;
 
-    private VRButtonExample button;
     public Transform spawnPoint;
-    public GameObject magazinePrefab;
 
     public enum ammoType
     {
@@ -19,40 +18,39 @@ public class AmmoAssign : MonoBehaviour {
         minigun,
         none
     }
-    private string num;
+    private int num;
     public ammoType typeOfAmmo = ammoType.none;
 
     // Use this for initialization
     void Start() {
-        button = GetComponent<VRButtonExample>();
         switch (typeOfAmmo)
         {
             case ammoType.revolver:
-                num = "1";
+                num = 1;
                 break;
             case ammoType.shotgun:
-                num = "2";
+                num = 2;
                 break;
             case ammoType.smg:
-                num = "2";
+                num = 3;
                 break;
             case ammoType.assault:
-                num = "2";
+                num = 4;
                 break;
             case ammoType.sniper:
-                num = "2";
+                num = 5;
                 break;
             case ammoType.sniperCal:
-                num = "2";
+                num = 6;
                 break;
             case ammoType.grenadeLauncher:
-                num = "2";
+                num = 7;
                 break;
             case ammoType.minigun:
-                num = "2";
+                num = 8;
                 break;
             default:
-                num = "0";
+                num = 0;
                 break;
         }
     }
@@ -61,4 +59,9 @@ public class AmmoAssign : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void Activate()
+    {
+
+    }
 }

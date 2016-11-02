@@ -226,6 +226,7 @@
      <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRMagazine.cs" />
      <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRSecondHeld.cs" />
      <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRThrowingKnife.cs" />
+     <Compile Include="Assets\Scripts\AmmoAssign.cs" />
      <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnemyHUDBehaviour.cs" />
      <Compile Include="Assets\Scripts\RoofBehaviour.cs" />
