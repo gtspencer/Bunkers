@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public float attackCooldownHigh;
     public int attackPoints = 1;
     public float killThreshhold = 1.5f;
+    private bool attackMode;
 
     //Use this for initialization
     void Start() {
@@ -35,7 +36,7 @@ public class EnemyBehaviour : MonoBehaviour {
         collisionObject = collision.gameObject;
         if (collisionObject.name == "SmallWall" || collisionObject.name == "LargeWall") {
             wallBehaviour = collisionObject.GetComponent<WallBehaviour>();
-            InvokeRepeating("Attack", attackCooldownLow, attackCooldownHigh);
+            attackMode = true;
         }
     }
 
@@ -47,11 +48,11 @@ public class EnemyBehaviour : MonoBehaviour {
 
     void Attack()
     {
-        GetComponent<Renderer>().material.color = Color.red;
-        wallBehaviour.ProcessDamage(attackPoints);
-        if (collisionObject == null)
+        while (attackMode) 
         {
-            CancelInvoke();
+            GetComponent<Renderer>().material.color = Color.red;
+            wallBehaviour.ProcessDamage(attackPoints);
+            //add a timer here
         }
     }
 
