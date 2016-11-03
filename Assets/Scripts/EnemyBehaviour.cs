@@ -24,6 +24,7 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        target = GameObject.FindGameObjectWithTag("MainCamera");
         targetPos = target.transform.position;
         transform.LookAt(target.transform);
         Move();
@@ -66,5 +67,12 @@ public class EnemyBehaviour : MonoBehaviour {
     public int getHitPoints()
     {
         return hp;
+    }
+
+    public void Damage(DamageInfo info)
+    {
+        if (hp <= 0) { return; }
+        hp -= info.damage;
+        if (hp <= 0) { Destroy(gameObject); } else { FixedUpdate(); }
     }
 }
