@@ -32,8 +32,9 @@ public class AmmoAssign : MonoBehaviour {
 	
 	}
 
-    public void Activate()
+    public IEnumerator Activate()
     {
         Instantiate(ammo, spawnPoint.position, Quaternion.identity);
+        yield return new WaitForSeconds(.5f);
     }
 }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Spawn : MonoBehaviour {
 
+    public GameObject enemyToSpawn;
+    public string tag;
     public int numberOfEnemies = 5;
     public float spawnTimeLowRange = 3;
     public float spawnTimeHighRange = 5;
@@ -12,13 +14,13 @@ public class Spawn : MonoBehaviour {
 
     public GameObject[] enemies;
 
-    public int amount;
+    private int amount;
 
     private Vector3 spawnPoint;
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = GameObject.FindGameObjectsWithTag(tag);
         amount = enemies.Length;
 
         if (amount != numberOfEnemies)
@@ -30,10 +32,10 @@ public class Spawn : MonoBehaviour {
     void spawnEnemy()
     {
         spawnPoint.x = Random.Range(spawnMinRange, spawnMaxRange);
-        spawnPoint.y = 0.138f;
+        spawnPoint.y = 0.7f;
         spawnPoint.z = Random.Range(spawnMinRange, spawnMaxRange);
 
-        Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length - 1)], spawnPoint, Quaternion.identity);
+        Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
         CancelInvoke();
     }
 }

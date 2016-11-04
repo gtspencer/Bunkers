@@ -12,11 +12,11 @@ public class EnemyBehaviour : MonoBehaviour {
 
     public float speed = 0.1f;
     public int hp = 100;
-    public float attackCooldownLow;
-    public float attackCooldownHigh;
+    public float attackCooldown;
     public int attackPoints = 1;
     public float killThreshhold = 1.5f;
     private bool attackMode;
+    public Color defaultColor;
 
     //Use this for initialization
     void Start() {
@@ -24,11 +24,19 @@ public class EnemyBehaviour : MonoBehaviour {
         targetPos = target.transform.position;
     }
 
-    void FixedUpdate() {
+    void Update() {
         target = GameObject.FindGameObjectWithTag("MainCamera");
         targetPos = target.transform.position;
         transform.LookAt(target.transform);
-        Move();
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+        if (attackMode)
+        {
+            attemptAttack();
+        } else
+        {
+            GetComponent<Renderer>().material.color = defaultColor;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -38,22 +46,26 @@ public class EnemyBehaviour : MonoBehaviour {
             wallBehaviour = collisionObject.GetComponent<WallBehaviour>();
             attackMode = true;
         }
+        StartCoroutine("Update");
     }
 
     void Move()
     {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+
     }
 
     void Attack()
     {
-        while (attackMode) 
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-            wallBehaviour.ProcessDamage(attackPoints);
-            //add a timer here
-        }
+        GetComponent<Renderer>().material.color = Color.red;
+        wallBehaviour.ProcessDamage(attackPoints);
+    }
+
+    public IEnumerator attemptAttack()
+    {
+        attackMode = false;
+        StartCoroutine("Attack");
+        yield return new WaitForSeconds(attackCooldown);
+        attackMode = true;
     }
 
     void ProcessDamage(int attackPoints)
@@ -72,8 +84,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
     public void Damage(DamageInfo info)
     {
-        if (hp <= 0) { return; }
         hp -= info.damage;
-        if (hp <= 0) { Destroy(gameObject); } else { FixedUpdate(); }
+        if (hp <= 0) { Destroy(gameObject); } else { StartCoroutine("FixedUpdate"); }
     }
 }
