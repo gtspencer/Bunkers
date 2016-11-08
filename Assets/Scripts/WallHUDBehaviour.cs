@@ -15,7 +15,7 @@ public class WallHUDBehaviour : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		textMesh.transform.LookAt(Camera.main.transform.position);
+		//textMesh.transform.LookAt(Camera.main.transform.position);
         int hp = wallBehaviour.GetHitPoints();
         if (hp <= 0)
         {
