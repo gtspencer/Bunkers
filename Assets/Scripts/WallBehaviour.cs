@@ -8,6 +8,9 @@ public class WallBehaviour : MonoBehaviour {
     public bool wood;
     public bool metal;
     public bool cement;
+    public Material wood;
+    public Material metal;
+    public Material cement;
 
 	//Use this for initialization
 	void Start () {
@@ -15,18 +18,17 @@ public class WallBehaviour : MonoBehaviour {
 		if (wood)
         {
             hitPoints = 100;
-            //GetComponent<Renderer>().material.color = new Color(97, 61, 7, 255);
+            //GetComponent<Renderer>().material.color = wood;
         } else if (metal)
         {
             hitPoints = 500;
-            //GetComponent<Renderer>().material.color = new Color(43, 47, 42, 255);
+            //GetComponent<Renderer>().material.color = metal;
         }
         else if (cement)
         {
             hitPoints = 1000;
-            //GetComponent<Renderer>().material.color = new Color(163, 163, 163, 255);
+            //GetComponent<Renderer>().material.color = cement;
         }
-        
     }
 
     void FixedUpdate()

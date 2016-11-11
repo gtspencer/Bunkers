@@ -6,16 +6,17 @@ using Valve.VR;
 public class EnemyBehaviour : MonoBehaviour {
     private GameObject target;
     private Vector3 targetPos;
-
     private WallBehaviour wallBehaviour;
     private GameObject collisionObject;
+    private bool attackMode;
 
+    public GameObject bunkerToAttack;
     public float speed = 0.1f;
     public int hp = 100;
-    public float attackCooldown;
+    public float attackCooldown = 1.0f;
     public int attackPoints = 1;
     public float killThreshhold = 1.5f;
-    private bool attackMode;
+    public float attackRange = 1.0f;
     public Color defaultColor;
 
     //Use this for initialization
@@ -24,16 +25,20 @@ public class EnemyBehaviour : MonoBehaviour {
         targetPos = target.transform.position;
     }
 
-    void Update() {
+    void FixedUpdate() {
         target = GameObject.FindGameObjectWithTag("MainCamera");
         targetPos = target.transform.position;
         transform.LookAt(target.transform);
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
-        if (attackMode)
+
+        var distance = Vector3.Distance(transform.position - bunker.position);
+        if (distance <= attackRange)
         {
+            attackMode = true;
             attemptAttack();
-        } else
+        }
+        else
         {
             GetComponent<Renderer>().material.color = defaultColor;
         }
@@ -41,12 +46,14 @@ public class EnemyBehaviour : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
+        /**
         collisionObject = collision.gameObject;
         if (collisionObject.name == "SmallWall" || collisionObject.name == "LargeWall") {
             wallBehaviour = collisionObject.GetComponent<WallBehaviour>();
             attackMode = true;
         }
         StartCoroutine("Update");
+        */
     }
 
     void Move()
@@ -73,7 +80,7 @@ public class EnemyBehaviour : MonoBehaviour {
         hp -= attackPoints;
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -85,6 +92,11 @@ public class EnemyBehaviour : MonoBehaviour {
     public void Damage(DamageInfo info)
     {
         hp -= info.damage;
-        if (hp <= 0) { Destroy(gameObject); } else { StartCoroutine("FixedUpdate"); }
+        if (hp <= 0) { Die(); } else { StartCoroutine("FixedUpdate"); }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
