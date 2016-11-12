@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public float attackCooldown = 1.0f;
     public int attackPoints = 1;
     public float killThreshhold = 1.5f;
-    public float attackRange = 1.0f;
+    public float attackRange = .0001f;
     public Color defaultColor;
 
     //Use this for initialization
@@ -32,11 +32,12 @@ public class EnemyBehaviour : MonoBehaviour {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
-        var distance = Vector3.Distance(transform.position - bunker.position);
+        var distance = Vector3.Distance(bunkerToAttack.transform.position, transform.position);
+        //Debug.Log(distance);
         if (distance <= attackRange)
         {
             attackMode = true;
-            attemptAttack();
+            StartCoroutine("attemptAttack");
         }
         else
         {

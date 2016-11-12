@@ -8,9 +8,9 @@ public class WallBehaviour : MonoBehaviour {
     public bool wood;
     public bool metal;
     public bool cement;
-    public Material wood;
-    public Material metal;
-    public Material cement;
+    public Material woodMat;
+    public Material metalMat;
+    public Material cementMat;
 
 	//Use this for initialization
 	void Start () {

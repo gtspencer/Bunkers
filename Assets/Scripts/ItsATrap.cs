@@ -19,13 +19,13 @@ public class ItsATrap : MonoBehaviour
 
     }
 
-    OnCollisionTrigger(Collision collision)
+    void OnCollisionTrigger(Collision collision)
     {
         GameObject collisionObject = collision.gameObject;
         if (collisionObject.name == "Enemy")
         {
             enemyBehaviour = collisionObject.GetComponent<EnemyBehaviour>();
-            enemyBehaviour.processDamage(attackPoints);
+            //enemyBehaviour.processDamage(attackPoints);
         }
     }
 }
