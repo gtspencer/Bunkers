@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -250,16 +252,20 @@
     <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRMagazine.cs" />
     <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRSecondHeld.cs" />
     <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRThrowingKnife.cs" />
-    <Compile Include="Assets\Scripts\AmmoAssign.cs" />
-    <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
-    <Compile Include="Assets\Scripts\EnemyHUDBehaviour.cs" />
-    <Compile Include="Assets\Scripts\RoofBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Spawn.cs" />
-    <Compile Include="Assets\Scripts\UserBehaviour.cs" />
-    <Compile Include="Assets\Scripts\WallBehaviour.cs" />
-    <Compile Include="Assets\Scripts\WallHUDBehaviour.cs" />
-    <Compile Include="Assets\Scripts\WallTopBehaviour.cs" />
-    <Compile Include="Assets\Scripts\WeaponSelector.cs" />
+    <Compile Include="Assets\Scripts\Bunker and User\RoofBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Bunker and User\UserBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Bunker and User\WallBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Bunker and User\WallHUDBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Bunker and User\WallTopBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NPC\EnemyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NPC\EnemyHUDBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NPC\DefenderBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NPC\RandomEnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\NPC\Spawn.cs" />
+    <Compile Include="Assets\Scripts\MonsterBall.cs" />
+    <Compile Include="Assets\Scripts\Weapons and Ammo\AmmoAssign.cs" />
+    <Compile Include="Assets\Scripts\Weapons and Ammo\ItsATrap.cs" />
+    <Compile Include="Assets\Scripts\Weapons and Ammo\WeaponSelector.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
