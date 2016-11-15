@@ -5,7 +5,7 @@ public class ItsATrap : MonoBehaviour
 {
     public int hp;
     public int attackPoints;
-    public float attackCooldown;
+    public float trapCooldown;
     private EnemyBehaviour enemyBehaviour;
     private bool trapping;
 

@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Assets\Devil_Dog\05_Script\ButtonController.cs" />
+     <Compile Include="Assets\Assets\Devil_Dog\05_Script\ButtonManager.cs" />
      <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\AimScript.cs" />
      <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\DebrisScript.cs" />
      <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\ExplosiveBarrelScript.cs" />
@@ -226,19 +228,21 @@
      <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRMagazine.cs" />
      <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRSecondHeld.cs" />
      <Compile Include="Assets\Assets\VRWeaponInteractor\Scripts\Weapons\VRThrowingKnife.cs" />
-     <Compile Include="Assets\Scripts\AmmoAssign.cs" />
-     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
-     <Compile Include="Assets\Scripts\EnemyHUDBehaviour.cs" />
-     <Compile Include="Assets\Scripts\ItsATrap.cs" />
+     <Compile Include="Assets\Scripts\Bunker and User\RoofBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Bunker and User\UserBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Bunker and User\WallBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Bunker and User\WallHUDBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Bunker and User\WallTopBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Delete.cs" />
      <Compile Include="Assets\Scripts\MonsterBall.cs" />
-     <Compile Include="Assets\Scripts\RandomEnemySpawn.cs" />
-     <Compile Include="Assets\Scripts\RoofBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Spawn.cs" />
-     <Compile Include="Assets\Scripts\UserBehaviour.cs" />
-     <Compile Include="Assets\Scripts\WallBehaviour.cs" />
-     <Compile Include="Assets\Scripts\WallHUDBehaviour.cs" />
-     <Compile Include="Assets\Scripts\WallTopBehaviour.cs" />
-     <Compile Include="Assets\Scripts\WeaponSelector.cs" />
+     <Compile Include="Assets\Scripts\NPC\DefenderBehaviour.cs" />
+     <Compile Include="Assets\Scripts\NPC\EnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\NPC\EnemyHUDBehaviour.cs" />
+     <Compile Include="Assets\Scripts\NPC\RandomEnemySpawn.cs" />
+     <Compile Include="Assets\Scripts\NPC\Spawn.cs" />
+     <Compile Include="Assets\Scripts\Weapons and Ammo\AmmoAssign.cs" />
+     <Compile Include="Assets\Scripts\Weapons and Ammo\ItsATrap.cs" />
+     <Compile Include="Assets\Scripts\Weapons and Ammo\WeaponSelector.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -276,11 +280,15 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
      <None Include="Assets\Assets\VRTK\Version.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
+     <None Include="Assets\Assets\Funky Wood Textures\README.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\UIOverlay.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\VRTK_OutlineBasic.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\AdaptiveQualityDebugVisualization.shader" />
      <None Include="Assets\Assets\VRWeaponInteractor\readme.txt" />
+     <None Include="Assets\Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
+     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Devil_Dog_Animation.txt" />
+     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Create.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\TransparentFresnelBehind.shader" />
@@ -295,6 +303,9 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="Destruction">
+ <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Scripts/Destruction.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

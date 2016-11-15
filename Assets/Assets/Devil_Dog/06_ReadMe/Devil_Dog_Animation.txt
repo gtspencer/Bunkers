@@ -1,0 +1,22 @@
+
+
+Idle : 0-90 frame
+
+Eat : 0-120 frame
+
+Walk01 : 0-30 frame
+
+Walk02 : 0-20 frame
+
+Run : 0-19 frame
+
+Attack01 : 0-20 frame
+
+Attack02 : 0-25 frame
+
+Damage01 : 0-15 frame
+
+Damage02 : 0-15 frame
+
+Death : 0-45 frame
+
