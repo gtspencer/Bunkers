@@ -25,7 +25,7 @@ public class Spawn : MonoBehaviour {
 
         if (amount != numberOfEnemies)
         {
-            InvokeRepeating("spawnEnemy", spawnTimeLowRange, spawnTimeHighRange);
+            InvokeRepeating(spawnEnemy(), spawnTimeLowRange, spawnTimeHighRange);
         }
 	}
 

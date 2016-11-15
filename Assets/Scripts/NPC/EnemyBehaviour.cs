@@ -29,7 +29,7 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (transform.position.y <= -1)
+        if (transform.position.y <= -1 || hp <= 0)
         {
             Destroy(gameObject);
         }
@@ -38,10 +38,10 @@ public class EnemyBehaviour : MonoBehaviour {
 
         if (attackMode)
         {
-            StartCoroutine("Attack");
+            StartCoroutine(Attack());
         } else if (hp <= 0)
         {
-            StartCoroutine("Die");
+            StartCoroutine(Die());
         } else
         {
             //GetComponent<Renderer>().material.color = defaultColor;
