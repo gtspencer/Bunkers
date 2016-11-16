@@ -19,6 +19,6 @@ public class SwordGrab : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        sword.transform.SetParent();
+        //sword.transform.SetParent();
     }
 }

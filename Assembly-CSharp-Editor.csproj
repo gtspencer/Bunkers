@@ -114,6 +114,12 @@
  <Reference Include="UnityEngine.Analytics">
  <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
+ <Reference Include="DestructionEditor">
+ <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Editor/DestructionEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Destruction">
+ <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Scripts/Destruction.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>G:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -140,12 +146,6 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>G:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Destruction">
- <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Scripts/Destruction.dll</HintPath>
- </Reference>
- <Reference Include="DestructionEditor">
- <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Editor/DestructionEditor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

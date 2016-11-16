@@ -3,8 +3,6 @@ using System.Collections;
 
 public class RoofBehaviour : MonoBehaviour {
 
-    public GameObject roof;
-
     public GameObject wall1;
     public GameObject wall2;
     public GameObject wall3;
@@ -14,7 +12,7 @@ public class RoofBehaviour : MonoBehaviour {
 	void FixedUpdate () {
 	    if (wall1 == null && wall2 == null && wall3 == null && wall4 == null)
         {
-            Destroy(roof);
+            Destroy(gameObject);
         }
 	}
 }

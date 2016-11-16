@@ -23,12 +23,14 @@ public class ExceptionLogging : MonoBehaviour
         {
             case LogType.Exception:
             case LogType.Error:
+                /**
                 using (SreamWriter writer = new StreamWriter(new FileStream(saveFile, FileMode.Append)))
                 {
                     writer.WriteLine(type);
                     writer.WriteLine(logString);
                     writer.WriteLine(stackTrace);
                 }
+    */
                 break;
             default:
                 break;

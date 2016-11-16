@@ -14,7 +14,7 @@ public class LayerUtils : MonoBehaviour
             {
                 layers.Add(layerName, layer);
             }
-            return layers;
         }
+        return layers;
     }
 }

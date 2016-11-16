@@ -10,6 +10,8 @@ public class EnemyBehaviour : MonoBehaviour {
     public GameObject collisionObject;
     public bool attackMode;
     private Animation animation;
+    private FriendlyBehaviour friendlyBehaviour;
+    private int whichAttack;
 
 
     public float speed = 0.1f;
@@ -29,12 +31,17 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (transform.position.y <= -1 || hp <= 0)
+        if (transform.position.y <= -1)
         {
             Destroy(gameObject);
         }
         targetPos = target.transform.position;
-        transform.LookAt(target.transform);
+        transform.LookAt(targetPos);
+
+        if (collisionObject == null)
+        {
+            attackMode = false;
+        }
 
         if (attackMode)
         {
@@ -56,10 +63,13 @@ public class EnemyBehaviour : MonoBehaviour {
         if (collision.gameObject.tag == "Bunker") {
             wallBehaviour = collision.gameObject.GetComponent<WallBehaviour>();
             attackMode = true;
+            whichAttack = 0;
         }
-        if (collision.gameObject.tag == "Defender")
+        if (collision.gameObject.tag == "GoodGuy")
         {
-
+            friendlyBehaviour = collision.gameObject.GetComponent<FriendlyBehaviour>();
+            attackMode = true;
+            whichAttack = 1;
         }
     }
 
@@ -69,7 +79,17 @@ public class EnemyBehaviour : MonoBehaviour {
         animation.CrossFade("Devil_Dog_Attack01", .2f);
         attackMode = false;
         //GetComponent<Renderer>().material.color = Color.red;
-        wallBehaviour.ProcessDamage(attackPoints);
+        switch (whichAttack)
+        {
+            case 0:
+                wallBehaviour.ProcessDamage(attackPoints);
+                break;
+            case 1:
+                friendlyBehaviour.ProcessDamage(attackPoints);
+                break;
+            default:
+                break;
+        }
         yield return new WaitForSeconds(attackCooldown);
         attackMode = true;
     }
@@ -83,7 +103,7 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         hp -= info.damage;
         if (hp <= 0) {
-            Die();
+            attackMode = false;
         }
     }
 
@@ -92,7 +112,7 @@ public class EnemyBehaviour : MonoBehaviour {
         hp -= damage;
         if (hp <= 0)
         {
-            Die();
+            attackMode = false;
         }
     }
 
@@ -101,14 +121,15 @@ public class EnemyBehaviour : MonoBehaviour {
         hp -= attackPoints;
         if (hp <= 0)
         {
-            Die();
+            attackMode = false;
         }
     }
 
     public IEnumerator Die()
     {
+        attackMode = false;
         animation.CrossFade("Devil_Dog_Death", .3f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 }

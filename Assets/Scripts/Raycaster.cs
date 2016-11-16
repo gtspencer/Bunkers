@@ -10,7 +10,7 @@ public class Raycaster : MonoBehaviour {
 	
 	public List<Vector3> rayHitPositions = new List<Vector3>();
 	public List<Vector3> sphereHitPositions = new List<Vector3>();
-	
+    /**
 	ComboBox layerChooser;
 
 	// Use this for initialization
@@ -32,9 +32,9 @@ public class Raycaster : MonoBehaviour {
 	void OnLayerUnselected(ComboBox.ComboItem item) {
 		layerMask = layerMask & ~(1<<(int)item.value);
 	}
-
-	// Update is called once per frame
-	void Update () {
+    */
+    // Update is called once per frame
+    void Update () {
 
 		//Allow us to rotate the caster at 20 degrees per second
 		if(Input.GetKey(KeyCode.A)) {
@@ -150,7 +150,7 @@ public class Raycaster : MonoBehaviour {
 	/// Raises the GUI event.
 	/// </summary>
 	void OnGUI() {
-		layerChooser.Draw(GUI.skin.box, new Rect(0,0, 110, 250));
+		//layerChooser.Draw(GUI.skin.box, new Rect(0,0, 110, 250));
 		GUI.Label(new Rect(130, 0, 230, 40), "LayerMask: " + IntToBits(layerMask));
 	}
 }
