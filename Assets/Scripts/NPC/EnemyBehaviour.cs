@@ -51,6 +51,7 @@ public class EnemyBehaviour : MonoBehaviour {
             StartCoroutine(Die());
         } else
         {
+            attackMode = false;
             //GetComponent<Renderer>().material.color = defaultColor;
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPos, step);

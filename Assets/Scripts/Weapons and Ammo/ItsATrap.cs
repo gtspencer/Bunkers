@@ -20,7 +20,7 @@ public class ItsATrap : MonoBehaviour
     {
         if (trapping)
         {
-            StartCoroutine("DealDamage");
+            StartCoroutine(DealDamage());
         }
     }
 

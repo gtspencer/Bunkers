@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -71,6 +69,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Assets\Devil_Dog\05_Script\ButtonController.cs" />
+    <Compile Include="Assets\Assets\Devil_Dog\05_Script\ButtonManager.cs" />
     <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\AimScript.cs" />
     <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\DebrisScript.cs" />
     <Compile Include="Assets\Assets\Low Poly Gun Pack\Components\Demo Scene\Scripts\ExplosiveBarrelScript.cs" />
@@ -257,14 +257,26 @@
     <Compile Include="Assets\Scripts\Bunker and User\WallBehaviour.cs" />
     <Compile Include="Assets\Scripts\Bunker and User\WallHUDBehaviour.cs" />
     <Compile Include="Assets\Scripts\Bunker and User\WallTopBehaviour.cs" />
+    <Compile Include="Assets\Scripts\DebugSaveLoad\ExceptionLogging.cs" />
+    <Compile Include="Assets\Scripts\DebugSaveLoad\SaveLoadSimpleObjects.cs" />
+    <Compile Include="Assets\Scripts\DebugSaveLoad\SimpleObject.cs" />
+    <Compile Include="Assets\Scripts\DebugSaveLoad\SimpleSubObject.cs" />
+    <Compile Include="Assets\Scripts\Delete.cs" />
+    <Compile Include="Assets\Scripts\ExtensionMethods.cs" />
+    <Compile Include="Assets\Scripts\LayerUtils.cs" />
+    <Compile Include="Assets\Scripts\MonsterBall.cs" />
+    <Compile Include="Assets\Scripts\NPC\DefenderBehaviour.cs" />
     <Compile Include="Assets\Scripts\NPC\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\NPC\EnemyHUDBehaviour.cs" />
-    <Compile Include="Assets\Scripts\NPC\DefenderBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NPC\FriendlyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NPC\FriendlyGrow.cs" />
+    <Compile Include="Assets\Scripts\NPC\FriendlyHUDBehaviour.cs" />
     <Compile Include="Assets\Scripts\NPC\RandomEnemySpawn.cs" />
     <Compile Include="Assets\Scripts\NPC\Spawn.cs" />
-    <Compile Include="Assets\Scripts\MonsterBall.cs" />
+    <Compile Include="Assets\Scripts\Raycaster.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\AmmoAssign.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\ItsATrap.cs" />
+    <Compile Include="Assets\Scripts\Weapons and Ammo\SwordGrab.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\WeaponSelector.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
@@ -303,6 +315,10 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
+    <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Create.txt" />
+    <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Devil_Dog_Animation.txt" />
+    <None Include="Assets\Assets\Funky Wood Textures\README.txt" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\AdaptiveQualityDebugVisualization.shader" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\TransparentFresnelBehind.shader" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\UIOverlay.shader" />

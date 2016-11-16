@@ -9,18 +9,24 @@ public class FriendlyBehaviour : MonoBehaviour
     private GameObject currentTarget;
     private Vector3 targetPos;
     private EnemyBehaviour enemyBehaviour;
-    public GameObject collisionObject;
-    public bool attackMode;
-    private Animation animation;
+    private GameObject collisionObject;
     private float distanceFromTarget;
 
+    public bool attackMode;
+    public bool smallMode;
+    public bool scaleMode;
 
+    private Animation animation;
     public float speed = 0.1f;
     public int hp = 100;
     public float attackCooldown = 1.0f;
     public int attackPoints = 1;
     public float killThreshhold = 1.5f;
     public Color defaultColor;
+    public float scaleUp = .1f;
+    public float maxScale = 1.3f;
+    public float minScale = .1f;
+
 
     //Use this for initialization
     void Start()
@@ -29,8 +35,10 @@ public class FriendlyBehaviour : MonoBehaviour
         currentTarget = targets[0];
         distanceFromTarget = Vector3.Distance(transform.position, targets[0].transform.position);
         animation = GetComponent<Animation>();
-        animation.CrossFade("Devil_Dog_Run");
+        animation.CrossFade("Devil_Dog_Idle");
         attackMode = false;
+        smallMode = true;
+        scaleMode = false;
     }
 
     void FixedUpdate()
@@ -53,21 +61,39 @@ public class FriendlyBehaviour : MonoBehaviour
         targetPos = currentTarget.transform.position;
         transform.LookAt(currentTarget.transform);
 
-        if (attackMode)
+        if (attackMode) //collided with valid enemy
         {
             StartCoroutine(Attack());
         }
-        else if (hp <= 0)
+        else if (smallMode) //in play pen
+        {
+            animation.CrossFade("Devil_Dog_Walk01");
+        }
+        else if (scaleMode) //grow up here
+        {
+            scaleMode = false;
+            if (gameObject.transform.localScale.x < maxScale)
+            {
+                Vector3 scale = gameObject.transform.localScale;
+                scale.x += scaleUp;
+                scale.y += scaleUp;
+                scale.z += scaleUp;
+                gameObject.transform.localScale = scale;
+                scaleMode = true;
+            }
+        }
+        else if (hp <= 0) //dead mode
         {
             StartCoroutine(Die());
             targetPos = transform.position;
         }
-        else
+        else //normal mode
         {
             //GetComponent<Renderer>().material.color = defaultColor;
+            animation.CrossFade("Devil_Dog_Run");
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
         }
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -77,6 +103,9 @@ public class FriendlyBehaviour : MonoBehaviour
         {
             enemyBehaviour = collision.gameObject.GetComponent<EnemyBehaviour>();
             attackMode = true;
+        } else if (collision.gameObject.tag == "Ground" && smallMode = true)
+        {
+            scaleMode = true;
         }
     }
 
