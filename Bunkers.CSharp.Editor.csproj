@@ -112,14 +112,40 @@
     <Reference Include="Mono.Cecil">
       <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="RAIN">
+      <HintPath>Assets\Assets\RAIN\RAIN.dll</HintPath>
+    </Reference>
+    <Reference Include="RAINEditor">
+      <HintPath>Assets\Assets\RAIN\Editor\RAINEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="RAINMetaformEditor">
+      <HintPath>Assets\Assets\RAIN\Editor\RAINMetaformEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="RAINMetaform">
+      <HintPath>Assets\Assets\RAIN\RAINMetaform.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Bunkers.CSharp.Plugins.csproj">
+      <Project>{4A9BD542-E98C-DD67-8B64-F9A3C939C97E}</Project>
+      <Name>Bunkers.CSharp.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="Bunkers.CSharp.csproj">
       <Project>{628BC309-F054-0008-CDAC-690A7734CB69}</Project>
       <Name>Bunkers.CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Assets\Cinema Suite\About\Editor\CinemaSuiteWelcome.cs" />
+    <Compile Include="Assets\Assets\Cinema Suite\About\Editor\ProductInfo.cs" />
+    <Compile Include="Assets\Assets\Cinema Suite\Cinema Themes\Editor\CinemaThemesWindow.cs" />
+    <Compile Include="Assets\Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
+    <Compile Include="Assets\Assets\RAIN\Editor\ScriptTemplates\ActionTemplate_CS.cs" />
+    <Compile Include="Assets\Assets\RAIN\Editor\ScriptTemplates\DecisionTemplate_CS.cs" />
+    <Compile Include="Assets\Assets\SimpleLUT\Editor\SimpleLUT_Editor.cs" />
     <Compile Include="Assets\Assets\VRTK\Editor\VRTK_AdaptiveQualityEditor.cs" />
     <Compile Include="Assets\Assets\VRTK\Editor\VRTK_EditorUtilities.cs" />
     <Compile Include="Assets\Assets\VRTK\Editor\VRTK_InteractableObjectEditor.cs" />
@@ -149,9 +175,29 @@
   <ItemGroup>
     <None Include="Assets\Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
     <None Include="Assets\Assets\CC Cartoon Skybox\readme.txt" />
+    <None Include="Assets\Assets\Cinema Suite\About\Editor\Resources\BaseProductInfo.xml" />
+    <None Include="Assets\Assets\Cinema Suite\Cinema Themes\Editor\Resources\CinemaThemesInstalledProductInfo.xml" />
+    <None Include="Assets\Assets\Cinema Suite\Cinema Themes\ReadMe.txt" />
     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Create.txt" />
     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Devil_Dog_Animation.txt" />
     <None Include="Assets\Assets\Funky Wood Textures\README.txt" />
+    <None Include="Assets\Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />
+    <None Include="Assets\Assets\LeanTween\License.txt" />
+    <None Include="Assets\Assets\LeanTween\ReadMe.txt" />
+    <None Include="Assets\Assets\Meshinator\Documentation\ReadMe.txt" />
+    <None Include="Assets\Assets\Meshinator\Example Scenes\Prefabs\Materials\diamond shader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\AspectRingShader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\AspectSphereShader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\NavMeshColliderShader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\NavMeshContourShader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\VisualSensorLineShader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\VisualSensorRingShader.shader" />
+    <None Include="Assets\Assets\RAIN\Editor\Shaders\WaypointShader.shader" />
+    <None Include="Assets\Assets\RAIN\ReleaseNotes.txt" />
+    <None Include="Assets\Assets\SimpleLUT\Readme.txt" />
+    <None Include="Assets\Assets\SimpleLUT\Shader\SimpleLUT.shader" />
+    <None Include="Assets\Assets\SimpleLUT\_HereVR Color Grading Demo\Readme - HVR Color Grading Demo.txt" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\AdaptiveQualityDebugVisualization.shader" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\TransparentFresnelBehind.shader" />
     <None Include="Assets\Assets\VRTK\Scripts\Shaders\UIOverlay.shader" />
