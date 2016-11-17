@@ -103,7 +103,7 @@ public class FriendlyBehaviour : MonoBehaviour
         {
             enemyBehaviour = collision.gameObject.GetComponent<EnemyBehaviour>();
             attackMode = true;
-        } else if (collision.gameObject.tag == "Ground" && smallMode = true)
+        } else if (collision.gameObject.tag == "Ground" && smallMode == true)
         {
             scaleMode = true;
         }

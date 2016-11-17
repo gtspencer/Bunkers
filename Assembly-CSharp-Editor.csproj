@@ -74,6 +74,7 @@
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
      <None Include="Assets\Assets\Funky Wood Textures\README.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
+     <None Include="Assets\Assets\CC Cartoon Skybox\readme.txt" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\UIOverlay.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\VRTK_OutlineBasic.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\AdaptiveQualityDebugVisualization.shader" />
@@ -114,12 +115,6 @@
  <Reference Include="UnityEngine.Analytics">
  <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
- <Reference Include="DestructionEditor">
- <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Editor/DestructionEditor.dll</HintPath>
- </Reference>
- <Reference Include="Destruction">
- <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/Fracture - Box Destruction - Standard/Scripts/Destruction.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>G:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -147,6 +142,10 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>G:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{3402A120-AD33-0EC3-1668-6271A5C764FC}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,6 +9,7 @@ public class EnemyBehaviour : MonoBehaviour {
     private WallBehaviour wallBehaviour;
     public GameObject collisionObject;
     public bool attackMode;
+    private bool dead;
     private Animation animation;
     private FriendlyBehaviour friendlyBehaviour;
     private int whichAttack;
@@ -28,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour {
         attackMode = false;
         animation = GetComponent<Animation>();
         animation.CrossFade("Devil_Dog_Run");
+        dead = false;
     }
 
     void FixedUpdate() {
@@ -48,13 +50,18 @@ public class EnemyBehaviour : MonoBehaviour {
             StartCoroutine(Attack());
         } else if (hp <= 0)
         {
+            dead = true;
             StartCoroutine(Die());
         } else
         {
-            attackMode = false;
-            //GetComponent<Renderer>().material.color = defaultColor;
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            if (!dead)
+            {
+                attackMode = false;
+                //GetComponent<Renderer>().material.color = defaultColor;
+                float step = speed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+
+            }
         }
     }
 
@@ -129,6 +136,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public IEnumerator Die()
     {
         attackMode = false;
+        StopCoroutine(Attack());
         animation.CrossFade("Devil_Dog_Death", .3f);
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
