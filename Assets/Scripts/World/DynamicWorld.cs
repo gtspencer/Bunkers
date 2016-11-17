@@ -9,6 +9,12 @@ public class DynamicWorld : MonoBehaviour {
 	public int chunkSize = 5;
 	public int chunkHeight = 20;
 
+    private bool add;
+    private bool subtract;
+    private bool crater;
+    private bool flat;
+    private Vector3 hitPosition;
+
 	public int toolRadius = 5;
 	public float toolStrength = .01f;
 
@@ -96,11 +102,11 @@ public class DynamicWorld : MonoBehaviour {
 	}
 
 
-	void Update() {
+	void FixedUpdate() {
 
 		//Add density to a selected radius
-		if(Input.GetKey(KeyCode.Q)) {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if(add) {
+			Ray ray = Camera.main.ScreenPointToRay(hitPosition);
 			RaycastHit hitInfo;
 			if (Physics.Raycast (ray, out hitInfo)) 
 			{
@@ -109,18 +115,18 @@ public class DynamicWorld : MonoBehaviour {
 		}
 
 		//Subtract density from a selected radius
-		if(Input.GetKey(KeyCode.E)) {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if(subtract) {
+			Ray ray = Camera.main.ScreenPointToRay(hitPosition);
 			RaycastHit hitInfo;
 			if (Physics.Raycast (ray, out hitInfo)) 
 			{
 				SubDensity(hitInfo.point, toolRadius);
 			}
 		}
-
+        
 		//Apply a crater to the landscape
-		if(Input.GetKeyDown(KeyCode.C)) {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if(crater) {
+			Ray ray = Camera.main.ScreenPointToRay(hitPosition);
 			RaycastHit hitInfo;
 			if (Physics.Raycast (ray, out hitInfo)) 
 			{
@@ -129,8 +135,8 @@ public class DynamicWorld : MonoBehaviour {
 		}
 
 		//Apply the flat tool to the landscape
-		if(Input.GetKey(KeyCode.F)) {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if(flat) {
+			Ray ray = Camera.main.ScreenPointToRay(hitPosition);
 			RaycastHit hitInfo;
 			if (Physics.Raycast (ray, out hitInfo)) 
 			{
@@ -448,4 +454,54 @@ public class DynamicWorld : MonoBehaviour {
 	    */
     }
 
+    public void toggleAdd(bool set, Vector3 location)
+    {
+        hitPosition = location;
+        if (set)
+        {
+            add = true;
+        } else
+        {
+            add = false;
+        }
+    }
+
+    public void toggleSubtract(bool set, Vector3 location)
+    {
+        hitPosition = location;
+        if (set)
+        {
+            subtract = true;
+        }
+        else
+        {
+            subtract = false;
+        }
+    }
+
+    public void toggleCrater(bool set, Vector3 location)
+    {
+        hitPosition = location;
+        if (set)
+        {
+            crater = true;
+        }
+        else
+        {
+            crater = false;
+        }
+    }
+
+    public void toggleFlat(bool set, Vector3 location)
+    {
+        hitPosition = location;
+        if (set)
+        {
+            flat = true;
+        }
+        else
+        {
+            flat = false;
+        }
+    }
 }

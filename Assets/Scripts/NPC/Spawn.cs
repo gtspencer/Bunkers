@@ -5,37 +5,55 @@ public class Spawn : MonoBehaviour {
 
     public GameObject enemyToSpawn;
     public string tag;
-    public int numberOfEnemies = 5;
-    public float spawnTimeLowRange = 3;
-    public float spawnTimeHighRange = 5;
-
+    private int enemiesInScene;
+    public int enemiesAllowedInScene = 5;
+    public int totalEnemies = 10;
+    public int spawnCoolDown = 2;
     public int spawnMinRange = -10;
     public int spawnMaxRange = 10;
 
-    public GameObject[] enemies;
-
-    private int amount;
-
+    private bool spawning;
+    private GameObject[] enemies;
+    private int enemiesSoFar;
     private Vector3 spawnPoint;
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         enemies = GameObject.FindGameObjectsWithTag(tag);
-        amount = enemies.Length;
+        enemiesInScene = enemies.Length;
 
-        if (amount != numberOfEnemies)
+        if (enemiesInScene < enemiesAllowedInScene && !spawning && enemiesSoFar < totalEnemies)
         {
-            InvokeRepeating("spawnEnemy", spawnTimeLowRange, spawnTimeHighRange);
+            StartCoroutine(spawnEnemy());
         }
-	}
 
-    void spawnEnemy()
+        if (enemiesSoFar >= totalEnemies)
+        {
+            StartCoroutine(Win());
+        }
+    }
+
+    IEnumerator spawnEnemy()
     {
-        spawnPoint.x = Random.Range(spawnMinRange, spawnMaxRange);
-        spawnPoint.y = 0.7f;
-        spawnPoint.z = Random.Range(spawnMinRange, spawnMaxRange);
+        spawning = true;
+        while (enemiesInScene < enemiesAllowedInScene)
+        {
+            enemies = GameObject.FindGameObjectsWithTag(tag);
+            enemiesInScene = enemies.Length;
 
-        Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
-        CancelInvoke();
+            spawnPoint.x = Random.Range(spawnMinRange, spawnMaxRange);
+            spawnPoint.y = 0.7f;
+            spawnPoint.z = Random.Range(spawnMinRange, spawnMaxRange);
+
+            Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+            enemiesSoFar++;
+            yield return new WaitForSeconds(spawnCoolDown);
+        }
+        spawning = false;
+    }
+
+    IEnumerator Win()
+    {
+        yield return new WaitForSeconds(1);
     }
 }

@@ -169,8 +169,24 @@ public class VRInteractableItem : MonoBehaviour {
 	{
 	}
 
-	//Used as the Eject action
-	virtual public void Action2Pressed()
+    virtual public void addPressed()
+    {
+    }
+
+    virtual public void addReleased()
+    {
+    }
+
+    virtual public void flattenPressed()
+    {
+    }
+
+    virtual public void flattenReleased()
+    {
+    }
+
+    //Used as the Eject action
+    virtual public void Action2Pressed()
 	{
 		if (heldBy != null) heldBy.Drop();
 	}

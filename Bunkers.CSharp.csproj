@@ -277,7 +277,12 @@
     <Compile Include="Assets\Scripts\Weapons and Ammo\AmmoAssign.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\ItsATrap.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\SwordGrab.cs" />
+    <Compile Include="Assets\Scripts\Weapons and Ammo\TerrainDeformer.cs" />
     <Compile Include="Assets\Scripts\Weapons and Ammo\WeaponSelector.cs" />
+    <Compile Include="Assets\Scripts\World\Contouring3D.cs" />
+    <Compile Include="Assets\Scripts\World\DynamicChunk.cs" />
+    <Compile Include="Assets\Scripts\World\DynamicWorld.cs" />
+    <Compile Include="Assets\Scripts\World\WorldMeshGenerator.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -316,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
+    <None Include="Assets\Assets\CC Cartoon Skybox\readme.txt" />
     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Create.txt" />
     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Devil_Dog_Animation.txt" />
     <None Include="Assets\Assets\Funky Wood Textures\README.txt" />

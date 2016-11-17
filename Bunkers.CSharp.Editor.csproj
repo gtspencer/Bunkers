@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
+    <None Include="Assets\Assets\CC Cartoon Skybox\readme.txt" />
     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Create.txt" />
     <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Devil_Dog_Animation.txt" />
     <None Include="Assets\Assets\Funky Wood Textures\README.txt" />
