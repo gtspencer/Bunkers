@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using MovementEffects;
 
 public class ItsATrap : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class ItsATrap : MonoBehaviour
     {
         if (trapping)
         {
-            StartCoroutine(DealDamage());
+            Timing.RunCoroutine(DealDamage());
         }
     }
 
@@ -34,7 +35,7 @@ public class ItsATrap : MonoBehaviour
         }
     }
 
-    public IEnumerator DealDamage()
+    public IEnumerator<float> DealDamage()
     {
         trapping = false;
         enemyBehaviour.ProcessDamage(attackPoints);

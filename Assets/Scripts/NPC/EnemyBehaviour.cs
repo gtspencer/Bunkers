@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
-using System.Collections;
+using System.Collections.Generic;
+using MovementEffects;
 using Valve.VR;
 
 public class EnemyBehaviour : MonoBehaviour {
@@ -33,13 +34,12 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        targetPos = target.transform.position;
+        transform.LookAt(targetPos);
         if (transform.position.y <= -1)
         {
             Destroy(gameObject);
         }
-        targetPos = target.transform.position;
-        transform.LookAt(targetPos);
-
         if (collisionObject == null)
         {
             attackMode = false;
@@ -47,11 +47,11 @@ public class EnemyBehaviour : MonoBehaviour {
 
         if (attackMode)
         {
-            StartCoroutine(Attack());
+            Timing.RunCoroutine(Attack(), Segment.FixedUpdate);
         } else if (hp <= 0)
         {
             dead = true;
-            StartCoroutine(Die());
+            Timing.RunCoroutine(Die(), Segment.FixedUpdate);
         } else
         {
             if (!dead)
@@ -82,7 +82,7 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
 
-    public IEnumerator Attack()
+    public IEnumerator<float> Attack()
     {
         animation.CrossFade("Devil_Dog_Attack01", .2f);
         attackMode = false;
@@ -98,7 +98,7 @@ public class EnemyBehaviour : MonoBehaviour {
             default:
                 break;
         }
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new Timing.WaitForSeconds(attackCooldown);
         attackMode = true;
     }
 
@@ -133,12 +133,13 @@ public class EnemyBehaviour : MonoBehaviour {
         }
     }
 
-    public IEnumerator Die()
+    public IEnumerator<float> Die()
     {
         attackMode = false;
         StopCoroutine(Attack());
         animation.CrossFade("Devil_Dog_Death", .3f);
-        yield return new WaitForSeconds(5f);
+        yield return new Timing.WaitForSeconds(3f);
         Destroy(gameObject);
+        yield break;
     }
 }

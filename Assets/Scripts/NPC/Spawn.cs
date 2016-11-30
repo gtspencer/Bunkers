@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using MovementEffects;
 
 public class Spawn : MonoBehaviour {
 
@@ -24,16 +25,16 @@ public class Spawn : MonoBehaviour {
 
         if (enemiesInScene < enemiesAllowedInScene && !spawning && enemiesSoFar < totalEnemies)
         {
-            StartCoroutine(spawnEnemy());
+            Timing.RunCoroutine(spawnEnemy());
         }
 
         if (enemiesSoFar >= totalEnemies)
         {
-            StartCoroutine(Win());
+            Timing.RunCoroutine(Win());
         }
     }
 
-    IEnumerator spawnEnemy()
+    IEnumerator<float> spawnEnemy()
     {
         spawning = true;
         while (enemiesInScene < enemiesAllowedInScene)
@@ -52,7 +53,7 @@ public class Spawn : MonoBehaviour {
         spawning = false;
     }
 
-    IEnumerator Win()
+    IEnumerator<float> Win()
     {
         yield return new WaitForSeconds(1);
     }

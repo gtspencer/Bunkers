@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
-using System.Collections;
+using System.Collections.Generic;
+using MovementEffects;
 using Valve.VR;
 
 public class FriendlyBehaviour : MonoBehaviour
@@ -63,7 +64,7 @@ public class FriendlyBehaviour : MonoBehaviour
 
         if (attackMode) //collided with valid enemy
         {
-            StartCoroutine(Attack());
+            Timing.RunCoroutine(Attack());
         }
         else if (smallMode) //in play pen
         {
@@ -84,7 +85,7 @@ public class FriendlyBehaviour : MonoBehaviour
         }
         else if (hp <= 0) //dead mode
         {
-            StartCoroutine(Die());
+            Timing.RunCoroutine(Die());
             targetPos = transform.position;
         }
         else //normal mode
@@ -110,7 +111,7 @@ public class FriendlyBehaviour : MonoBehaviour
     }
 
 
-    public IEnumerator Attack()
+    public IEnumerator<float> Attack()
     {
         animation.CrossFade("Devil_Dog_Attack01", .2f);
         attackMode = false;
@@ -143,7 +144,7 @@ public class FriendlyBehaviour : MonoBehaviour
         }
     }
 
-    public IEnumerator Die()
+    public IEnumerator<float> Die()
     {
         attackMode = false;
         animation.CrossFade("Devil_Dog_Death", .3f);

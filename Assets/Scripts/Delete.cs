@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using MovementEffects;
 
 public class Delete : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class Delete : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        StartCoroutine(EraseForeverAndEver());
+        Timing.RunCoroutine(EraseForeverAndEver());
 	}
 
     /**
@@ -29,7 +30,7 @@ public class Delete : MonoBehaviour {
     }
     */
 
-    IEnumerator EraseForeverAndEver()
+    IEnumerator<float> EraseForeverAndEver()
     {
         yield return new WaitForSeconds(deleteAfterSeconds);
         Destroy(gameObject);
