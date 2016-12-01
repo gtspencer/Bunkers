@@ -117,7 +117,7 @@ public class FriendlyBehaviour : MonoBehaviour
         attackMode = false;
         //GetComponent<Renderer>().material.color = Color.red;
         enemyBehaviour.ProcessDamage(attackPoints);
-        yield return new WaitForSeconds(attackCooldown);
+        yield return Timing.WaitForSeconds(attackCooldown);
         attackMode = true;
     }
 
@@ -148,7 +148,7 @@ public class FriendlyBehaviour : MonoBehaviour
     {
         attackMode = false;
         animation.CrossFade("Devil_Dog_Death", .3f);
-        yield return new WaitForSeconds(5f);
+        yield return Timing.WaitForSeconds(5f);
         Destroy(gameObject);
     }
 }

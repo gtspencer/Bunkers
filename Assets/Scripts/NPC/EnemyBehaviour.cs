@@ -98,7 +98,7 @@ public class EnemyBehaviour : MonoBehaviour {
             default:
                 break;
         }
-        yield return new Timing.WaitForSeconds(attackCooldown);
+        yield return Timing.WaitForSeconds(attackCooldown);
         attackMode = true;
     }
 
@@ -138,7 +138,7 @@ public class EnemyBehaviour : MonoBehaviour {
         attackMode = false;
         StopCoroutine(Attack());
         animation.CrossFade("Devil_Dog_Death", .3f);
-        yield return new Timing.WaitForSeconds(3f);
+        yield return Timing.WaitForSeconds(3f);
         Destroy(gameObject);
         yield break;
     }

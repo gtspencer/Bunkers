@@ -4,7 +4,7 @@ using MovementEffects;
 
 public class Delete : MonoBehaviour {
 
-    public int deleteAfterSeconds;
+    public float deleteAfterSeconds;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +32,7 @@ public class Delete : MonoBehaviour {
 
     IEnumerator<float> EraseForeverAndEver()
     {
-        yield return new WaitForSeconds(deleteAfterSeconds);
+        yield return Timing.WaitForSeconds(deleteAfterSeconds);
         Destroy(gameObject);
     }
 }

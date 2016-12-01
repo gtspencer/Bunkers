@@ -39,7 +39,7 @@ public class ItsATrap : MonoBehaviour
     {
         trapping = false;
         enemyBehaviour.ProcessDamage(attackPoints);
-        yield return new WaitForSeconds(trapCooldown);
+        yield return Timing.WaitForSeconds(trapCooldown);
         trapping = true;
     }
 }

@@ -45,10 +45,47 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\About.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\AmplifyColorEffectEditor.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\AmplifyColorEffectEditorBase.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\AmplifyColorVolumeEditor.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\AmplifyColorVolumeEditorBase.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\BackBufferHandler.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\CameraCollection.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\EncryptDecrypt.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\FileHandler.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\ImageResult.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\LUTEditor.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\LUTResult.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\LUTSettings.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\LUTWriter.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\PhotoshopConnection.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\PhotoshopEncryptDecrypt.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\PhotoshopHandler.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\PhotoshopProtocol.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\PhotoshopTouchHelper.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\ResolutionSettings.cs" />
+     <Compile Include="Assets\Assets\AmplifyColor\Plugins\Editor\ToolSettings.cs" />
      <Compile Include="Assets\Assets\Cinema Suite\About\Editor\CinemaSuiteWelcome.cs" />
      <Compile Include="Assets\Assets\Cinema Suite\About\Editor\ProductInfo.cs" />
      <Compile Include="Assets\Assets\Cinema Suite\Cinema Themes\Editor\CinemaThemesWindow.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AssetBuildReport.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AssetHunterHelper.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AssetHunterMainWindow.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AssetHunterSettings.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AssetHunterSettingsCreator.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AssetHunterSettingsWindow.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\AsssetHunterSceneOverview.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\ProjectFolderInfo.cs" />
+     <Compile Include="Assets\Assets\Heureka\AssetHunter\Editor\SerializableSystemType.cs" />
+     <Compile Include="Assets\Assets\Heureka\HeurekaShared\Editor\AssetReader.cs" />
+     <Compile Include="Assets\Assets\Heureka\HeurekaShared\Editor\ClassBuilder\ClassBuilder.cs" />
+     <Compile Include="Assets\Assets\Heureka\HeurekaShared\Editor\ClassBuilder\ClassBuilderType.cs" />
+     <Compile Include="Assets\Assets\Heureka\HeurekaShared\Editor\EditorUtils.cs" />
+     <Compile Include="Assets\Assets\Heureka\HeurekaShared\Editor\ScriptableObjectUtility.cs" />
      <Compile Include="Assets\Assets\SimpleLUT\Editor\SimpleLUT_Editor.cs" />
+     <Compile Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\Editor\DisplacementTrailRendererEditor.cs" />
+     <Compile Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\Editor\GrassEditor.cs" />
      <Compile Include="Assets\Assets\VRTK\Editor\VRTK_AdaptiveQualityEditor.cs" />
      <Compile Include="Assets\Assets\VRTK\Editor\VRTK_EditorUtilities.cs" />
      <Compile Include="Assets\Assets\VRTK\Editor\VRTK_InteractableObjectEditor.cs" />
@@ -90,7 +127,9 @@
      <Compile Include="Assets\SteamVR\Editor\SteamVR_Update.cs" />
      <None Include="Assets\Assets\VRTK\Version.txt" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+     <None Include="Assets\Assets\Heureka\AssetHunter\Editor\Settings\ScriptableObjectsFolder.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassSurface.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
@@ -101,6 +140,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Assets\SimpleLUT\_HereVR Color Grading Demo\Readme - HVR Color Grading Demo.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\MaskBlend.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
@@ -109,6 +149,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassTessellation.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
@@ -121,14 +162,22 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\UIOverlay.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\Blend.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\BlendCache.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\Mask.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\VRTK_OutlineBasic.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassVertex.cginc" />
+     <None Include="Assets\Assets\AmplifyColor\Samples\Check out the full LUT Package.txt" />
+     <None Include="Assets\Assets\Heureka\AssetHunter\Readme.txt" />
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\AdaptiveQualityDebugVisualization.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\Example\Textures\CGTextures.txt" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\Assets\SimpleLUT\Shader\SimpleLUT.shader" />
      <None Include="Assets\Assets\SimpleLUT\Readme.txt" />
      <None Include="Assets\Assets\VRWeaponInteractor\readme.txt" />
+     <None Include="Assets\Assets\AmplifyColor\Readme.txt" />
      <None Include="Assets\Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
@@ -136,33 +185,46 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassConfig.cginc" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassLighting.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
      <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Devil_Dog_Animation.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\ProcessOnly.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\DepthMask.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassFrag.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\Common.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
      <None Include="Assets\Assets\Devil_Dog\06_ReadMe\Create.txt" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\Grass.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
+     <None Include="Assets\StixGames - DirectX 11 Grass Shader\Camera-DepthNormalTexture.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassDynamicsShaders\NormalmapRenderer.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassDefinitionsAndFunctions.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\DepthMaskBlend.shader" />
+     <None Include="Assets\Assets\AmplifyColor\Resources\Base.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassGeom.cginc" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
@@ -176,6 +238,7 @@
      <None Include="Assets\Assets\VRTK\Scripts\Shaders\TransparentFresnelBehind.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
      <None Include="Assets\SteamVR\readme.txt" />
+     <None Include="Assets\Assets\StixGames - DirectX 11 Grass Shader\GrassDynamicsShaders\MeshNormalRenderer.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
@@ -243,10 +306,18 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>G:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="AmplifyColorEditor">
+ <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/AmplifyColor/Plugins/Editor/AmplifyColorEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="AmplifyColor">
+ <HintPath>C:/Users/spencer/dev/Bunkers/Assets/Assets/AmplifyColor/Plugins/AmplifyColor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{D841EF43-DAF7-010E-95B4-945A70A1B5B1}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{3402A120-AD33-0EC3-1668-6271A5C764FC}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

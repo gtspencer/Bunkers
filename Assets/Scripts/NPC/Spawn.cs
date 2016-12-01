@@ -48,13 +48,13 @@ public class Spawn : MonoBehaviour {
 
             Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
             enemiesSoFar++;
-            yield return new WaitForSeconds(spawnCoolDown);
+            yield return Timing.WaitForSeconds(spawnCoolDown);
         }
         spawning = false;
     }
 
     IEnumerator<float> Win()
     {
-        yield return new WaitForSeconds(1);
+        yield return Timing.WaitForSeconds(1);
     }
 }

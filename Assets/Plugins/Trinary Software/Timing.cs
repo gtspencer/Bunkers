@@ -6,7 +6,7 @@ using UnityEngine.Profiling;
 
 // /////////////////////////////////////////////////////////////////////////////////////////
 //                              More Effective Coroutines
-//                                        v1.11.0
+//                                        v1.11.1
 // 
 // This is an improved implementation of coroutines that boasts zero per-frame memory allocations,
 // runs about twice as fast as Unity's built in coroutines and has a range of extra features.
@@ -34,6 +34,7 @@ namespace MovementEffects
                 public IEnumerator<float> Task;
                 public string Tag;
                 public Segment Segment;
+                public double PauseTime;
             }
 
             public IEnumerator<float> Trigger;
@@ -122,7 +123,7 @@ namespace MovementEffects
         private readonly List<WaitingProcess> _waitingProcesses = new List<WaitingProcess>();
         private readonly Queue<System.Exception> _exceptions = new Queue<System.Exception>();
         private readonly Dictionary<ProcessIndex, string> _processTags = new Dictionary<ProcessIndex, string>();
-        private readonly Dictionary<string, HashSet<ProcessIndex>> _taggedProcesses = new Dictionary<string, HashSet<ProcessIndex>>();
+        private readonly Dictionary<string, List<ProcessIndex>> _taggedProcesses = new Dictionary<string, List<ProcessIndex>>();
 
         private IEnumerator<float>[] UpdateProcesses = new IEnumerator<float>[InitialBufferSizeLarge];
         private IEnumerator<float>[] LateUpdateProcesses = new IEnumerator<float>[InitialBufferSizeSmall];
@@ -495,6 +496,22 @@ namespace MovementEffects
             }
         }
 
+        private double GetSegmentTime(Segment segment)
+        {
+            switch (segment)
+            {
+                case Segment.Update:
+                    return _lastUpdateTime;
+                case Segment.LateUpdate:
+                    return _lastLateUpdateTime;
+                case Segment.FixedUpdate:
+                    return _lastFixedUpdateTime;
+                case Segment.SlowUpdate:
+                    return _lastSlowUpdateTime;
+                default:
+                    return 0d;
+            }
+        }
         /// <summary>
         /// Resets the value of LocalTime to zero (only for the Update, LateUpdate, and FixedUpdate segments).
         /// </summary>
@@ -510,36 +527,163 @@ namespace MovementEffects
         /// <summary>
         /// This will pause all coroutines running on the current MEC instance until ResumeCoroutines is called.
         /// </summary>
-        public static void PauseCoroutines()
+        /// <returns>The number of coroutines that were paused.</returns>
+        public static int PauseCoroutines()
         {
-            if(_instance != null)
-                _instance.PauseCoroutinesOnInstance();
+            return _instance == null ? 0 : _instance.PauseCoroutinesOnInstance();
         }
 
         /// <summary>
         /// This will pause all coroutines running on this MEC instance until ResumeCoroutinesOnInstance is called.
         /// </summary>
-        public void PauseCoroutinesOnInstance()
+        /// <returns>The number of coroutines that were paused.</returns>
+        public int PauseCoroutinesOnInstance()
         {
             enabled = false;
+
+            return _nextUpdateProcessSlot + _nextLateUpdateProcessSlot + _nextFixedUpdateProcessSlot + _nextSlowUpdateProcessSlot;
+        }
+
+        /// <summary>
+        /// This will pause any matching coroutines running on the current MEC instance until ResumeCoroutines is called.
+        /// </summary>
+        /// <param name="tag">Any coroutines with a matching tag will be paused.</param>
+        /// <returns>The number of coroutines that were paused.</returns>
+        public static int PauseCoroutines(string tag)
+        {
+            return _instance == null ? 0 : _instance.PauseCoroutinesOnInstance(tag);
+        }
+
+        /// <summary>
+        /// This will pause any matching coroutines running on this MEC instance until ResumeCoroutinesOnInstance is called.
+        /// </summary>
+        /// <param name="tag">Any coroutines with a matching tag will be paused.</param>
+        /// <returns>The number of coroutines that were paused.</returns>
+        public int PauseCoroutinesOnInstance(string tag)
+        {
+            if (tag == null)
+                return 0;
+
+            List<ProcessIndex> matches;
+            if (!_taggedProcesses.TryGetValue(tag, out matches))
+                return 0;
+
+            WaitingProcess pausedProcs = new WaitingProcess();
+            int count = 0;
+
+            for (int i = matches.Count - 1; i >= 0; i--)
+            {
+                ProcessIndex match = matches[i];
+                IEnumerator<float> task = CoindexExtract(match);
+
+                if (task == null)
+                    continue;
+
+                WaitingProcess.ProcessData procData = new WaitingProcess.ProcessData
+                {
+                    Segment = match.seg,
+                    Tag = RemoveTag(match),
+                    Task = task,
+                    PauseTime = task.Current > GetSegmentTime(match.seg) ? task.Current - GetSegmentTime(match.seg) : 0d
+                };
+
+                pausedProcs.Tasks.Add(procData);
+                count++;
+            }
+
+            _waitingProcesses.Add(pausedProcs);
+
+            return count;
         }
 
         /// <summary>
         /// This resumes all coroutines on the current MEC instance if they are currently paused, otherwise it has
         /// no effect.
         /// </summary>
-        public static void ResumeCoroutines()
+        /// <returns>The number of coroutines that were resumed.</returns>
+        public static int ResumeCoroutines()
         {
-            if(_instance != null)
-                _instance.ResumeCoroutinesOnInstance();
+            return _instance == null ? 0 : _instance.ResumeCoroutinesOnInstance();
         }
 
         /// <summary>
         /// This resumes all coroutines on this MEC instance if they are currently paused, otherwise it has no effect.
         /// </summary>
-        public void ResumeCoroutinesOnInstance()
+        /// <returns>The number of coroutines that were resumed.</returns>
+        public int ResumeCoroutinesOnInstance()
         {
             enabled = true;
+
+            int count = _nextUpdateProcessSlot + _nextLateUpdateProcessSlot + _nextFixedUpdateProcessSlot + _nextSlowUpdateProcessSlot;
+
+            for (int i = 0; i < _waitingProcesses.Count; i++)
+            {
+                if (_waitingProcesses[i].Trigger == null)
+                {
+                    for (int j = 0; j < _waitingProcesses[i].Tasks.Count; j++)
+                    {
+                        WaitingProcess.ProcessData proc = _waitingProcesses[i].Tasks[j];
+
+                        RunCoroutineOnInstance(proc.PauseTime > 0d ? InjectDelay(proc.Task, localTime + proc.PauseTime) : proc.Task, proc.Segment, proc.Tag);
+
+                        count++;
+                    }
+
+                    _waitingProcesses.RemoveAt(i--);
+                }
+            }
+
+            return count;
+        }
+
+        /// <summary>
+        /// This resumes any matching coroutines on the current MEC instance if they are currently paused, otherwise it has
+        /// no effect.
+        /// </summary>
+        /// <param name="tag">Any coroutines previously paused with a matching tag will be resumend.</param>
+        /// <returns>The number of coroutines that were resumed.</returns>
+        public static int ResumeCoroutines(string tag)
+        {
+            return _instance == null ? 0 : _instance.ResumeCoroutinesOnInstance(tag);
+        }
+
+        /// <summary>
+        /// This resumes any matching coroutines on this MEC instance if they are currently paused, otherwise it has no effect.
+        /// </summary>
+        /// <param name="tag">Any coroutines previously paused with a matching tag will be resumend.</param>
+        /// <returns>The number of coroutines that were resumed.</returns>
+        public int ResumeCoroutinesOnInstance(string tag)
+        {
+            if (tag == null)
+                return 0;
+            int count = 0;
+
+            for (int i = _waitingProcesses.Count - 1; i >= 0; i--)
+            {
+                if (_waitingProcesses[i].Trigger == null)
+                {
+                    for (int j = _waitingProcesses[i].Tasks.Count; j >= 0; j--)
+                    {
+                        if (_waitingProcesses[i].Tasks[j].Tag == tag)
+                        {
+                            WaitingProcess.ProcessData taskData = _waitingProcesses[i].Tasks[j];
+
+                            RunCoroutineOnInstance(taskData.PauseTime > 0d
+                                ? InjectDelay(taskData.Task, GetSegmentTime(taskData.Segment) + taskData.PauseTime)
+                                : taskData.Task, taskData.Segment, taskData.Tag);
+
+                            _waitingProcesses[i].Tasks.RemoveAt(j);
+
+                            count++;
+                        }
+                    }
+
+                    if (_waitingProcesses[i].Tasks.Count == 0)
+                        _waitingProcesses.RemoveAt(i);
+                }
+            }
+
+            return count;
         }
 
         private void RemoveUnused()
@@ -637,7 +781,7 @@ namespace MovementEffects
             if (_taggedProcesses.ContainsKey(tag))
                 _taggedProcesses[tag].Add(coindex);
             else
-                _taggedProcesses.Add(tag, new HashSet<ProcessIndex> { coindex });
+                _taggedProcesses.Add(tag, new List<ProcessIndex> { coindex });
         }
 
         private string RemoveTag(ProcessIndex coindex)
@@ -1036,6 +1180,33 @@ namespace MovementEffects
             }
         }
 
+        private IEnumerator<float> CoindexExtract(ProcessIndex coindex)
+        {
+            IEnumerator<float> retVal;
+
+            switch (coindex.seg)
+            {
+                case Segment.Update:
+                    retVal = UpdateProcesses[coindex.i];
+                    UpdateProcesses[coindex.i] = null;
+                    return retVal;
+                case Segment.FixedUpdate:
+                    retVal = FixedUpdateProcesses[coindex.i];
+                    FixedUpdateProcesses[coindex.i] = null;
+                    return retVal;
+                case Segment.LateUpdate:
+                    retVal = LateUpdateProcesses[coindex.i];
+                    LateUpdateProcesses[coindex.i] = null;
+                    return retVal;
+                case Segment.SlowUpdate:
+                    retVal = SlowUpdateProcesses[coindex.i];
+                    SlowUpdateProcesses[coindex.i] = null;
+                    return retVal;
+                default:
+                    return null;
+            }
+        }
+
         private bool CoindexMatches(ProcessIndex coindex, IEnumerator<float> handle)
         {
             switch (coindex.seg)
@@ -1051,6 +1222,14 @@ namespace MovementEffects
                 default:
                     return false;
             }
+        }
+
+        private static IEnumerator<float> InjectDelay(IEnumerator<float> proc, double returnAt)
+        {
+            yield return (float)returnAt;
+
+            ReplacementFunction = (input, timing, tag) => proc;
+            yield return float.NaN;
         }
 
         /// <summary>
@@ -1089,7 +1268,7 @@ namespace MovementEffects
             _taggedProcesses.Clear();
             _waitingProcesses.Clear();
             _exceptions.Clear();
-            _expansions = 1;
+            _expansions = (ushort)((_expansions / 2) + 1);
 
             ResetTimeCountOnInstance();
         }
@@ -1193,10 +1372,10 @@ namespace MovementEffects
 
             if (_taggedProcesses.ContainsKey(tag))
             {
-                foreach(ProcessIndex coindex in _taggedProcesses[tag])
+                for (int i = 0;i <_taggedProcesses[tag].Count;i++)
                 {
-                    CoindexKill(coindex);
-                    _processTags.Remove(coindex);
+                    CoindexKill(_taggedProcesses[tag][i]);
+                    _processTags.Remove(_taggedProcesses[tag][i]);
                     numberFound++;
                 }
                 _taggedProcesses.Remove(tag);
@@ -1204,7 +1383,7 @@ namespace MovementEffects
 
             for (int i = 0; i < _waitingProcesses.Count; i++)
             {
-                if(_waitingProcesses[i].TriggerTag == tag && !_waitingProcesses[i].Killed && !_waitingProcesses[i].Killed)
+                if (_waitingProcesses[i].TriggerTag == tag && !_waitingProcesses[i].Killed && !_waitingProcesses[i].Killed)
                 {
                     _waitingProcesses[i].Killed = true;
                     numberFound++;
@@ -1329,7 +1508,7 @@ namespace MovementEffects
 
             for(int i = 0;i < instance._waitingProcesses.Count;i++)
             {
-                if(instance._waitingProcesses[i].Trigger == otherCoroutine)
+                if (instance._waitingProcesses[i].Trigger == otherCoroutine)
                 {
                     WaitingProcess proc = instance._waitingProcesses[i];
                     ReplacementFunction = (input, segment, tag) =>
@@ -1338,7 +1517,8 @@ namespace MovementEffects
                         { 
                             Task = input,
                             Tag = tag,
-                            Segment = segment
+                            Segment = segment,
+                            PauseTime = input.Current > instance.GetSegmentTime(segment) ? input.Current - instance.GetSegmentTime(segment) : 0d
                         });
 
                         return null;
@@ -1361,7 +1541,8 @@ namespace MovementEffects
                             {
                                 Task = input,
                                 Tag = tag,
-                                Segment = segment
+                                Segment = segment,
+                                PauseTime = input.Current > instance.GetSegmentTime(segment) ? input.Current - instance.GetSegmentTime(segment) : 0d
                             });
 
                             instance._waitingProcesses.Add(proc);
@@ -1384,7 +1565,8 @@ namespace MovementEffects
                     {
                         Task = input,
                         Tag = tag,
-                        Segment = segment
+                        Segment = segment,
+                        PauseTime = input.Current > instance.GetSegmentTime(segment) ? input.Current - instance.GetSegmentTime(segment) : 0d
                     });
 
                     instance._waitingProcesses.Add(newProcess);
@@ -1445,8 +1627,10 @@ namespace MovementEffects
             {
                 _waitingProcesses.Remove(processData);
 
-                foreach (WaitingProcess.ProcessData taskData in processData.Tasks)
-                    RunCoroutineOnInstance(taskData.Task, taskData.Segment, taskData.Tag);
+                for (int i = 0; i < processData.Tasks.Count; i++)
+                    RunCoroutineOnInstance(processData.Tasks[i].PauseTime > 0d
+                        ? InjectDelay(processData.Tasks[i].Task, GetSegmentTime(processData.Tasks[i].Segment) + processData.Tasks[i].PauseTime)
+                        : processData.Tasks[i].Task, processData.Tasks[i].Segment, processData.Tasks[i].Tag);
             }
         }
 
